@@ -1,5 +1,5 @@
 from pathlib import Path
-from bypass import password1, user1
+from bypass import password1, user1, django_pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-97$t2akp7a*-3f+m#m)2^5o_3832h+pfcly%pgr^6u2sh*0!s-'
+SECRET_KEY = django_pass
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
