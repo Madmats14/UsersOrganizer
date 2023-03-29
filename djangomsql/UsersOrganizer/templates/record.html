@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card text-center">
+    <div class="card-header text-light" style="background-color: crimson;">
+        {{ user_record.username }}
+    </div>
+    <div class="card-body" style="background-color:  #ffe6ff;">
+      <h3 class="card-title">Platforms ID: {{user_record.id}}</h3>
+      <p class="card-text">
+        <h5 class="card-title" style="color:#572AEB">Discord</h5>
+        {{ user_record.discord_id }}<br/><br/>
+        <h5 class="card-title" style="color: #EB2A3D">Riot</h5>
+        {{ user_record.riot_id }}<br/><br/>
+        <h5 class="card-title" style="color: #5AB4F9">Battle Net</h5>
+        {{ user_record.battle_net_id }}<br/><br/>
+        <h5 class="card-title" style="color: #162937">Steam</h5>
+        {{ user_record.steam_id }}<br/><br/>
+        <h5 class="card-title">Epic Games</h5>
+        {{ user_record.epic_games_id }}<br/>
+    </p>
+    </div>
+    <div class="card-footer text-light" style="background-color: #EF7777;">
+      {{ user_record.created_at }}
+    </div>  
+</div>
+<br/>
+<a href="{% url 'home' %}" class="btn btn-danger">Back</a>
+<a href="{% url 'delete_record' user_record.id %}" class="btn btn-secondary">Delete</a>
+<a href="{% url 'edit_record' user_record.id %}" class="btn btn-danger">Edit</a><br/><br/>
+
+{% endblock %}

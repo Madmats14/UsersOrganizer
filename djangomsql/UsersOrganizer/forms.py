@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Record
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(label="", widget=forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Email Address'}))
@@ -29,4 +30,15 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
 
-        
+#Add record form
+class AddRecordForm(forms.ModelForm):
+    username = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder':'Username', 'class':'form-control'}), label='')
+    discord_id = forms.CharField(required=False, widget=forms.widgets.TextInput(attrs={'placeholder':'Discord Tag', 'class':'form-control'}), label='')
+    riot_id = forms.CharField(required=False, widget=forms.widgets.TextInput(attrs={'placeholder':'Riot Tag', 'class':'form-control'}), label='')
+    battle_net_id = forms.CharField(required=False, widget=forms.widgets.TextInput(attrs={'placeholder':'Battle Net Tag', 'class':'form-control'}), label='')
+    steam_id = forms.CharField(required=False, widget=forms.widgets.TextInput(attrs={'placeholder':'Steam Tag', 'class':'form-control'}), label='')
+    epic_games_id = forms.CharField(required=False, widget=forms.widgets.TextInput(attrs={'placeholder':'Epic Games Tag', 'class':'form-control'}), label='')
+
+    class Meta:
+        model = Record
+        exclude = ("user",)

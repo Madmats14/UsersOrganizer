@@ -2,14 +2,45 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
-
 {% if user.is_authenticated %}
 
-<h1>You are logged in!</h1>
+<h1>Tag's Gaming Database</h1>
+
+<table class="table table-striped" style="background-color:crimson">
+  <thead>
+    <tr class="text-light">
+      <th scope="col">Username</th>
+      <th scope="col">Discord</th>
+      <th scope="col">Riot</th>
+      <th scope="col">Battle Net</th>
+      <th scope="col">Steam</th>
+      <th scope="col">Epic Games</th>
+      <th scope="col">Created</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% if records %}
+    {% for record in records %}
+    <tr class="table-danger">
+      <td>{{ record.username }}</td>
+      <td>{{ record.discord_id }}</td>
+      <td>{{ record.riot_id }}</td>
+      <td>{{ record.battle_net_id }}</td>
+      <td>{{ record.steam_id }}</td>
+      <td>{{ record.epic_games_id }}</td>
+      <td>{{ record.created_at }}</td>
+      <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+      <br/>
+    </tr>
+    {% endfor %}
+  {% endif %}
+    
+  </tbody>
+</table>  
 
 {% else %}
-
+<div class="col-md-6 offset-md-3"></div>
 <h1>Login</h1>
 <br/>
 
@@ -27,9 +58,7 @@
       </form>
 
 </form>
-
 </div>
-
 {% endif %}
 
 {% endblock %}
